@@ -2,16 +2,12 @@ from fastapi import APIRouter
 
 
 
-from . import auth, user, client
+from . import auth, user
 
 from data.entities.user import User
 from domain.models.user import UserModel
 from domain.services.user import UserService
 
-
-from data.entities.client import Client
-from domain.models.client import ClientModel
-from domain.services.client import ClientService
 
 
 router = APIRouter()
@@ -19,7 +15,7 @@ router = APIRouter()
 def include_api_routes():
 
     auth_router = auth.AuthRouter("Auth")
-    user_router = user.UserRouter("User", UserModel, UserService("User", User))
+    user_router = user.UserRouter("User")
 
     #client_router = client.ClientRouter("Client", ClientService("Client", Client, ClientModel))
     

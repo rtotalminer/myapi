@@ -10,7 +10,7 @@ This application should serve as a solid template to build any API that implenet
 Firstly, install the requirements:
 
 ```
-pip install  requriements.txt 
+pip install -r requriements.txt 
 ```
 
 Then launch the server - make sure your in the directory `../myapi/`:

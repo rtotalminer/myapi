@@ -1,12 +1,19 @@
 from typing import Generic, TypeVar
 
 from domain.models.user import UserModel
-from .base import BasicRouter
+from .base import BaseRouter
 
 
-class UserRouter(BasicRouter):
-    def __init__(self, name, model, service):
-        super().__init__(name, model, service)
+class UserRouter(BaseRouter):
+    def __init__(self, name):
+        super().__init__(name)
+
+        self.router.add_api_route(f"/{self.name}/GetAll", self.getAll, methods=["GET"])
+        self.router.add_api_route(f"/{self.name}/Add", self.add, methods=["POST"])
     
-    def add(self, model: UserModel):
-        return model
+    def add(self):
+        e = self.service.add()
+        return e
+
+    def getAll(self):
+        return self.service.getAll()

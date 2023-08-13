@@ -1,3 +1,4 @@
+from domain.crypto import hash_str
 
 class BasicService():
 
@@ -8,21 +9,3 @@ class BasicService():
     def getById(self, id):
         e = self.entity.get(self.entity.id == id)
         return e.__data__
-        
-    def add(self):
-        pass
-
-    def bulkAdd(self):
-        pass
-
-    def update(self):
-        pass
-    
-    def delete(self):
-        pass
-
-    def bulkDelete(self):
-        pass
-
-    def count(self):
-        pass
