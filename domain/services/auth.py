@@ -5,7 +5,8 @@ from peewee import *
 from data.entities.user import User
 from domain.models.register import RegisterModelClient
 
-from domain.crypto import hash_str
+from domain.crypto import hash_pass
+from data.db import db
 
 # TODO: Move to .env
 my_secret = 'my_super_secret'
@@ -27,11 +28,9 @@ def register(user : RegisterModelClient):
         return False
     
     # create new user
-    db = SqliteDatabase('db.db')
     db.connect()
-    User.create(username = user.username, password=hash_str(user.password))
+    User.create(username = user.username, password=hash_pass(user.password))
 
-    
     # create jwt
     token = create_jwt_token({"username": user.username})
     

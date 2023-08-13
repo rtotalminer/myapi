@@ -12,7 +12,6 @@ class AuthRouter(BaseRouter):
     def login(self):
         pass
     
-    
     def register(self, user : RegisterModelClient):
         token = auth.register(user)
         if not (token):
