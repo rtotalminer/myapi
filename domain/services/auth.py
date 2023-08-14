@@ -10,7 +10,6 @@ from data.db import db
 
 from fastapi import HTTPException, status
 
-
 # TODO: Move to .env
 my_secret = 'my_super_secret'
 
@@ -42,7 +41,7 @@ def authenticate(user : UserModel):
 
     _user = User.get(User.id == user_id)
 
-    if not check_password(user.password, _user.password):
+    if not check_password(user.password, _user.password.encode()):
         return exception
 
     return _user.__data__
