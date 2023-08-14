@@ -1,8 +1,12 @@
 from peewee import *
 
-from .base import BaseModel
+from .base import BaseEntity
+from .role import Role
 
-class User(BaseModel):
+class User(BaseEntity):
     username = CharField(unique=True)
     password = CharField(unique=False)
-    salt = CharField(unique=False)
+    
+class UserRole(BaseEntity):
+    user = ForeignKeyField(User)
+    role = ForeignKeyField(Role)
